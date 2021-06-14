@@ -1,11 +1,7 @@
-import { Game } from './Engine/Game'
-import { GamePlayScene } from './Scenes/GamePlayScene'
-import { GameOverScene } from './Scenes/GameOverScene'
+import Phaser from 'phaser';
 
-export class GameApp extends Game {
-  constructor () {
-    super()
-    this.scenes.create([new GamePlayScene(this), new GameOverScene(this)])
-    this.renderer.create(this.scenes.currentScene(), this.scenes.currentScene().objectsToRender)
+export class GameApp extends Phaser.Game {
+  constructor(config: Phaser.Types.Core.GameConfig) {
+    super(config);
   }
 }
