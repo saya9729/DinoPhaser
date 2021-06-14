@@ -7,6 +7,8 @@ export class Dino extends Phaser.GameObjects.Sprite {
     isJumping: boolean;
     jumpKey: Phaser.Input.Keyboard.Key;
     duckKey: Phaser.Input.Keyboard.Key;
+    jumpSound: any;
+    sound: any;
 
     constructor(params: SpriteConstructor) {
         super(params.scene, params.x, params.y, params.texture, params.frame);
@@ -22,7 +24,7 @@ export class Dino extends Phaser.GameObjects.Sprite {
         // physics
         this.scene.physics.world.enable(this);
         this.body
-            .setGravityY(1000)
+            .setGravityY(5000)
             .setCollideWorldBounds(true)
 
 
@@ -33,6 +35,8 @@ export class Dino extends Phaser.GameObjects.Sprite {
         this.duckKey = this.scene.input.keyboard.addKey(
             Phaser.Input.Keyboard.KeyCodes.DOWN
         )
+
+        this.jumpSound = this.scene.sound.add('jump', { volume: 0.2 });
 
         this.scene.add.existing(this);
 
@@ -82,9 +86,10 @@ export class Dino extends Phaser.GameObjects.Sprite {
 
     jump() {//later
         this.isJumping = true;
-        this.body.setVelocityY(-500);
+        this.body.setVelocityY(-1600);
         if (!this.isDucking)
             this.play('dino_jump_anim', true);
+        this.jumpSound.play();
         this.body.setSize();
     }
 

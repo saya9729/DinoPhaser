@@ -10,7 +10,6 @@ export class GamePlayScene extends Phaser.Scene {
   width: any;
   isRunning: boolean;
   obsticles: Phaser.Physics.Arcade.Group;
-  jumpSound: Phaser.Sound.BaseSound;
   hurtSound: Phaser.Sound.BaseSound;
   milestoneSound: Phaser.Sound.BaseSound;
   constructor() {
@@ -23,7 +22,6 @@ export class GamePlayScene extends Phaser.Scene {
     this.height = this.game.config.height;
     this.width = this.game.config.width;
 
-    this.jumpSound = this.sound.add('jump', { volume: 0.2 });
     this.hurtSound = this.sound.add('hurt', { volume: 0.2 });
     this.milestoneSound = this.sound.add('milestone', { volume: 0.2 });
 
